@@ -86,6 +86,23 @@ if ($data = $mform->get_data()) {
         list($categoryid) = explode(',', $data->category);
         $includesubcategories = !empty($data->includesubcategories);
         $returnurl->param('cat', $data->category);
+        quiz_add_random_questions($quiz, $addonpage, $categoryid, $data->numbertoadd, $includesubcategories);
+    } else if (!empty($data->addrandomquestionsfromeachsub)) {
+        list($categoryid) = explode(',', $data->category);
+        $includesubcategories = !empty($data->includesubcategories);
+        $infoparentofsubcategories = explode(",", $data->category);
+        $parentofsubcategories = $infoparentofsubcategories[0];
+
+        $returnurl->param('cat', $data->category);
+
+        $subcategoryids = $DB->get_records_sql("
+                                          SELECT id
+                                            FROM {question_categories} category
+                                           WHERE category.parent = ?", array($parentofsubcategories));
+
+        foreach ($subcategoryids as $key => $value) {
+            quiz_add_random_questions($quiz, $addonpage, $key, $data->numbertoadd, $includesubcategories);
+        }
 
     } else if (!empty($data->newcategory)) {
         list($parentid, $contextid) = explode(',', $data->parent);
@@ -98,7 +115,6 @@ if ($data = $mform->get_data()) {
                 'It seems a form was submitted without any button being pressed???');
     }
 
-    quiz_add_random_questions($quiz, $addonpage, $categoryid, $data->numbertoadd, $includesubcategories);
     quiz_delete_previews($quiz);
     quiz_update_sumgrades($quiz);
     redirect($returnurl);

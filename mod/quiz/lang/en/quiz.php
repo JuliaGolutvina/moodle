@@ -53,6 +53,12 @@ $string['addrandom'] = 'Add {$a} random questions';
 $string['addrandomfromcategory'] = 'Add random questions from category:';
 $string['addrandomquestion'] = 'Add random question';
 $string['addarandomquestion_help'] = 'When a random question is added, it results in a randomly-chosen question from the category being inserted into the quiz. This means that different students are likely to get a different selection of questions, and when a quiz allows multiple attempts then each attempt is likely to contain a new selection of questions.';
+$string['addrandomquestions'] = 'Add random question(s)';
+$string['addrandomquestionfromeachsubcategory'] = 'Add random question(s) from each subcategory of this category';
+$string['addrandomquestionsfromeachsub'] = 'Add random question(s) from an existing category';
+$string['addrandomquestionsfromeachsub_help'] = '<p>To add one or several random questions from one category,  select this category and push button "Add random question(s)".</p>
+
+<p>To quickly add random question(s) from several subcategory,make sure that they are direct descendats of the selected categry and  push the button "Add random question(s) from each subcategory of this category".</p>';
 $string['addrandomquestionatend'] = 'Add a random question at the end';
 $string['addrandomquestiontopage'] = 'Add a random question to page {$a}';
 $string['addrandomquestiontoquiz'] = 'Add a random question to quiz {$a}';

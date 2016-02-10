@@ -47,6 +47,7 @@ class quiz_add_random_form extends moodleform {
         // Random from existing category section.
         $mform->addElement('header', 'categoryheader',
                 get_string('randomfromexistingcategory', 'quiz'));
+        $mform->addHelpButton('categoryheader', 'addrandomquestionsfromeachsub', 'quiz');
 
         $mform->addElement('questioncategory', 'category', get_string('category'),
                 array('contexts' => $usablecontexts, 'top' => false));
@@ -58,7 +59,7 @@ class quiz_add_random_form extends moodleform {
                 $this->get_number_of_questions_to_add_choices());
 
         $mform->addElement('submit', 'existingcategory', get_string('addrandomquestion', 'quiz'));
-
+        $mform->addElement('submit', 'addrandomquestionsfromeachsub', get_string('addrandomquestionfromeachsubcategory', 'quiz'));
         // Random from a new category section.
         $mform->addElement('header', 'categoryheader',
                 get_string('randomquestionusinganewcategory', 'quiz'));
